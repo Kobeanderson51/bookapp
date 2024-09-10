@@ -1,7 +1,40 @@
-.example-card {
-  max-width: 400px;
-  border-radius: 20px;
-}
 .padding {
   padding: 30px;
+  display: flex;
+  justify-content: center;
+}
+
+.example-card {
+  width: 100%;
+  max-width: 800px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.example-form-field {
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 16px 16px;
+}
+
+#searchButton {
+  background-color: #4caf50;
+  color: white;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+mat-list-item {
+  padding: 8px 0;
+  font-size: 14px;
+}
+
+mat-divider {
+  margin: 10px 0;
 }

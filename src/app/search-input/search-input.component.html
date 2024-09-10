@@ -1,15 +1,28 @@
 <div class="padding">
-<mat-card class="example-card" appearance="outlined">
+  <mat-card class="example-card" appearance="outlined">
     <mat-card-header>
-        <mat-card-title>Search</mat-card-title>
-        <mat-card-subtitle>Search by title</mat-card-subtitle>
+      <mat-card-title>Search for Books</mat-card-title>
+      <mat-card-subtitle>Search by title and author</mat-card-subtitle>
     </mat-card-header>
     <mat-card-content>
-        <p>
-            This is where our input will go
-        </p>
+      <mat-form-field class="example-form-field" appearance="outline">
+        <mat-label>Enter Book Title</mat-label>
+        <input matInput type="text" [(ngModel)]="value" placeholder="Enter book title..." />
+        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value = ''">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
     </mat-card-content>
-    <mat-card-actions>
-        <button mat-button>Search</button>
+    <mat-card-actions class="button-container">
+      <button (click)="search()" id="searchButton" mat-raised-button color="primary">Search</button>
     </mat-card-actions>
-</mat-card></div>
+    <mat-card-content *ngIf="apiResponse">
+      <mat-list *ngFor="let book of apiResponse.docs">
+        <mat-list-item><strong>Title:</strong> {{ book.title }}</mat-list-item>
+        <mat-list-item><strong>Author:</strong> {{ book.author_name ? book.author_name[0] : 'Unknown' }}</mat-list-item>
+        <mat-list-item><strong>First Publish Year:</strong> {{ book.first_publish_year || 'N/A' }}</mat-list-item>
+        <mat-divider></mat-divider>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+</div>
